@@ -101,4 +101,35 @@ public class Model
 	{
 		return this.grafo.edgeSet();
 	}
+	
+	//RICORSIONE 
+	List<State> camminoBest ; 
+	public List<State> cammino(State partenza)
+	{
+		camminoBest = new ArrayList<>(); 
+		List<State> parziale = new ArrayList<>(); 
+		parziale.add(partenza); 
+		this.cerca(parziale); 
+		
+		return camminoBest; 
+	}
+	
+	public void cerca(List<State> parziale) 
+	{
+		if(parziale.size() > camminoBest.size())
+		{
+			camminoBest = new ArrayList<>(parziale);
+		}
+		
+		State ultimo = parziale.get(parziale.size()-1); 
+		for(State s : Graphs.successorListOf(this.grafo, ultimo))
+		{
+			if (!parziale.contains(s))
+			{
+				parziale.add(s);
+				this.cerca(parziale);
+				parziale.remove(s);
+			}
+		}
+	}
 }

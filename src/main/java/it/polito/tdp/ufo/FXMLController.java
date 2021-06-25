@@ -66,7 +66,14 @@ public class FXMLController
 
 	@FXML void handleSequenza(ActionEvent event)
 	{
-
+		State state = this.boxStato.getValue(); 
+		if (state == null)
+		{
+			this.txtResult.appendText("\n\nErrore, scegliere elemento dalla lista");
+			return;
+		} 
+		
+		this.txtResult.appendText("\n\nCAMMINO: " + this.model.cammino(state));
 	}
 
 	@FXML void initialize()
