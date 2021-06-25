@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.ufo.FXMLController">
+<BorderPane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.ufo.FXMLController">
    <top>
-      <Label text="UFO Sightings (simulazione d'esame 11/06/2018)" textFill="BLUE" BorderPane.alignment="CENTER">
+      <Label text="UFO Sightings (simulazione d'esame 11/06/2018)" textFill="#0c0c29" BorderPane.alignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
@@ -36,19 +36,25 @@
               </rowConstraints>
                <children>
                   <Label text="Anno" />
-                  <ComboBox fx:id="boxAnno" prefWidth="150.0" promptText="Anno" GridPane.columnIndex="1" />
+                  <ComboBox fx:id="boxAnno" onAction="#handleAvvistamenti" prefWidth="150.0" promptText="Anno" GridPane.columnIndex="1" />
                   <Button mnemonicParsing="false" onAction="#handleAvvistamenti" text="Avvistamenti" GridPane.columnIndex="2" />
                   <Label text="Stato" GridPane.rowIndex="1" />
-                  <ComboBox fx:id="boxStato" prefWidth="150.0" promptText="Stato" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="boxStato" onAction="#handleAnalizza" prefWidth="150.0" promptText="Stato" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" onAction="#handleAnalizza" text="Analizza" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleSequenza" text="Sequenza di avvistamenti" textAlignment="JUSTIFY" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <TextArea fx:id="txtResult" />
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </BorderPane.margin>
       </VBox>
    </center>
+   <bottom>
+      <TextArea fx:id="txtResult" editable="false" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </TextArea>
+   </bottom>
 </BorderPane>
